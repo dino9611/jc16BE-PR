@@ -14,7 +14,7 @@ function Home() {
     year: "",
     price: 0,
     description: "",
-    id: -1,
+    idproduct: -1,
   });
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Home() {
 
   const renderData = () => {
     return data.map((val, index) => {
-      if (val.id === editData.id) {
+      if (val.idproduct === editData.idproduct) {
         return (
           <tr key={index}>
             <td>{index + 1}</td>
@@ -80,7 +80,7 @@ function Home() {
                     year: "",
                     price: 0,
                     description: "",
-                    id: -1,
+                    idproduct: -1,
                   });
                 }}
               >
@@ -99,7 +99,7 @@ function Home() {
           <td>{val.description}</td>
           <td>
             <button
-              onClick={() => onDeleteClick(val.id)}
+              onClick={() => onDeleteClick(val.idproduct)}
               className="btn btn-danger mr-2"
             >
               Delete
@@ -119,7 +119,7 @@ function Home() {
     seteditData(data[index]);
   };
   const onEditYesClick = () => {
-    let id = editData.id;
+    let idproduct = editData.idproduct;
     let data = {
       name: editData.name,
       year: editData.year,
@@ -127,14 +127,14 @@ function Home() {
       description: editData.description,
     };
     axios
-      .put(`http://localhost:5000/cars/${id}`, data)
+      .put(`http://localhost:5000/cars/${idproduct}`, data)
       .then((res) => {
         seteditData({
           name:"",
           year:"",
           price:"",
           description:"",
-          id: -1,
+          idproduct: -1,
         });
         setdata(res.data);
       })
@@ -143,11 +143,11 @@ function Home() {
       });
   };
 
-  const onDeleteClick = (id) => {
-    var tanya = window.confirm("Delete data with id " + id + " ?");
+  const onDeleteClick = (idproduct) => {
+    var tanya = window.confirm("Delete data with name " + idproduct + " ?");
     if (tanya) {
       axios
-        .delete(`http://localhost:5000/cars/${id}`)
+        .delete(`http://localhost:5000/cars/${idproduct}`)
         .then((res) => {
           setdata(res.data);
         })

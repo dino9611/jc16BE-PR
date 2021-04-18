@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { UsersController } = require("./../controllers");
+const { VerifyAccessToken } = require("./../helpers/VerifyToken");
 const {
   getUsers,
   postUsers,
@@ -8,6 +9,8 @@ const {
   deleteUsers,
   gantiPassword,
 } = UsersController;
+
+// router.use(VerifyAccessToken); // (middleware) cara untuk dipake ke semua
 
 router.get("/", getUsers);
 
