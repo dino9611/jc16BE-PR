@@ -1,2 +1,2 @@
 module.exports.Logger = require("./logger");
-module.exports.tampilkan = require("./tampilkan");
+module.exports.tampilan = require("./tampilan");

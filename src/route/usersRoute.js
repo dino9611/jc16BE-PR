@@ -1,14 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const { mysqldb } = require("./../connections");
+
 const { userControllers } = require("./../controllers");
-const { getUsers, postUsers, editUsers, deleteUser } = userControllers;
+
+const {
+  getUsers,
+  postUsers,
+  putUsers,
+  deleteUser,
+  gantipassword,
+} = userControllers;
 
 router.get("/", getUsers);
 
 router.post("/", postUsers);
 
-router.put("/:id", editUsers);
+router.put("/:id", putUsers);
+router.put("/editpass/:id", gantipassword);
 
 router.delete("/:id", deleteUser);
 
