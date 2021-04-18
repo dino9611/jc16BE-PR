@@ -1,4 +1,6 @@
-const authControlles = require("./authControllers");
 module.exports = {
-  authControlles,
+  authControllers: require("./authControllers"),
+  userControllers: require("./userControllers"),
+  productControllers: require("./productControllers"),
+  categoryControllers: require("./categoryControllers")
 }
