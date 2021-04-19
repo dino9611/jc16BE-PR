@@ -24,14 +24,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/test", (req, res) => {
-  res.set("test", "tesaja");
-  res.status(200).send({ coba: "abc" });
-});
-
-const { usersRoutes, AuthRoutes } = require("./src/route");
-app.use("/users", usersRoutes);
-app.use("/auth", AuthRoutes);
 
 app.all("*", (req, res) => {
   res.status(404).send("resource not found");
